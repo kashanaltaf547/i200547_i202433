@@ -30,167 +30,17 @@
         android:background="#34989C9C"
         android:drawableLeft="@drawable/search2" />
 
-    <TextView
-        android:id="@+id/text2"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Recent Searches"
-        android:textSize="17dp"
+        android:layout_height="match_parent"
         android:layout_below="@id/edit1"
-        android:layout_margin="15dp" />
-
-    <TextView
-        android:id="@+id/text3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Item Number One"
-        android:textSize="20dp"
-        android:layout_below="@id/text2"
-        android:textStyle="bold"
-        android:layout_marginTop="14dp"
-        android:layout_marginLeft="15dp"/>
-
-    <ImageView
-        android:id="@+id/image1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_arrow_outward_24"
-        android:layout_below="@id/text2"
-        android:layout_alignRight="@id/text3"
-        android:layout_margin="14dp"/>
-
-    <TextView
-        android:id="@+id/tt1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Item Number Two"
-        android:textSize="20dp"
-        android:layout_below="@id/text3"
-        android:textStyle="bold"
-        android:layout_marginTop="14dp"
-        android:layout_marginLeft="15dp"/>
-
-    <ImageView
-        android:id="@+id/im1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_arrow_outward_24"
-        android:layout_below="@id/text3"
-        android:layout_alignRight="@id/tt1"
-        android:layout_margin="14dp"/>
-
-    <TextView
-        android:id="@+id/tt2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Item Number Three"
-        android:textSize="20dp"
-        android:layout_below="@id/tt1"
-        android:textStyle="bold"
-        android:layout_marginTop="14dp"
-        android:layout_marginLeft="15dp"/>
-
-    <ImageView
-        android:id="@+id/im2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_arrow_outward_24"
-        android:layout_below="@id/tt1"
-        android:layout_alignRight="@id/tt2"
-        android:layout_margin="14dp"/>
-
-    <TextView
-        android:id="@+id/tt3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Popular Searches"
-        android:textSize="17dp"
-        android:layout_below="@id/tt2"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="15dp"/>
-
-    <TextView
-        android:id="@+id/tt4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Item Number One"
-        android:textSize="20dp"
-        android:layout_below="@id/tt3"
-        android:textStyle="bold"
-        android:layout_marginTop="14dp"
-        android:layout_marginLeft="15dp"/>
-
-    <ImageView
-        android:id="@+id/im3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_arrow_outward_24"
-        android:layout_below="@id/tt3"
-        android:layout_alignRight="@id/tt4"
-        android:layout_margin="14dp"/>
-
-    <TextView
-        android:id="@+id/tt5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Item Number Two"
-        android:textSize="20dp"
-        android:layout_below="@id/tt4"
-        android:textStyle="bold"
-        android:layout_marginTop="14dp"
-        android:layout_marginLeft="15dp"/>
-
-    <ImageView
-        android:id="@+id/im4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_arrow_outward_24"
-        android:layout_below="@id/tt4"
-        android:layout_alignRight="@id/tt5"
-        android:layout_margin="14dp"/>
-
-
-    <TextView
-        android:id="@+id/tt6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Item Number Three"
-        android:textSize="20dp"
-        android:layout_below="@id/tt5"
-        android:textStyle="bold"
-        android:layout_marginTop="14dp"
-        android:layout_marginLeft="15dp"/>
-
-    <ImageView
-        android:id="@+id/im5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_arrow_outward_24"
-        android:layout_below="@id/tt5"
-        android:layout_alignRight="@id/tt6"
-        android:layout_margin="14dp"/>
-
-    <TextView
-        android:id="@+id/tt7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Item Number Four"
-        android:textSize="20dp"
-        android:layout_below="@id/tt6"
-        android:textStyle="bold"
-        android:layout_marginTop="14dp"
-        android:layout_marginLeft="15dp"/>
-
-    <ImageView
-        android:id="@+id/im6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_arrow_outward_24"
-        android:layout_below="@id/tt6"
-        android:layout_alignRight="@id/tt7"
-        android:layout_margin="14dp"/>
-
+        android:layout_above="@+id/line1"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/edit1"
+        tools:listitem="@layout/recycler_item" />
 
     <View
         android:id="@+id/line1"
@@ -264,6 +114,4 @@
             tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
-
-
 </RelativeLayout>
