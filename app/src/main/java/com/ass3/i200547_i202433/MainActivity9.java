@@ -26,8 +26,8 @@ public class MainActivity9 extends AppCompatActivity {
     ImageButton l6;
     EditText r1;
 
-    // Map to store message timestamps
     private Map<String, Long> messageTimestamps = new HashMap<>();
+    private DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +42,15 @@ public class MainActivity9 extends AppCompatActivity {
         l6 = findViewById(R.id.file);
         r1 = findViewById(R.id.reply);
 
+        dbHelper = new DBHelper(this);
+
         l1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Activity1();
             }
         });
+
         l2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,14 +82,18 @@ public class MainActivity9 extends AppCompatActivity {
             }
         });
 
-        // Set up a handler to simulate the receipt of a message
         final Handler handler = new Handler(Looper.getMainLooper());
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 receiveMessage("This is a sample message", "18:56");
             }
-        }, 3000); // Simulate a delay of 3 seconds before receiving a message
+        }, 3000);
+    }
+
+    private void Activity1() {
+        Intent intent = new Intent(this, MainActivity8.class);
+        startActivity(intent);
     }
 
     private void Activity6() {
@@ -113,26 +120,12 @@ public class MainActivity9 extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity18.class);
         startActivity(intent);
     }
-
-    private void Activity1() {
-        Intent intent = new Intent(this, MainActivity8.class);
-        startActivity(intent);
-    }
-
-    private boolean isEditable(String message) {
-        Long timestamp = messageTimestamps.get(message);
-        if (timestamp != null) {
-            long currentTime = System.currentTimeMillis();
-            return (currentTime - timestamp) <= (5 * 60 * 1000); // 5 minutes in milliseconds
-        }
-        return false;
-    }
-
     private void sendMultimediaMessage(final String senderId, final String receiverId, final String message, final File file) {
         new SendMessageTask().execute(senderId, receiverId, message, file.getPath());
     }
 
     private void receiveMessage(String message, String timestamp) {
+        dbHelper.insertMessage(message, timestamp);
         messageTimestamps.put(message, System.currentTimeMillis());
         addReceivedMessageToLayout(message, timestamp);
     }
@@ -149,7 +142,6 @@ public class MainActivity9 extends AppCompatActivity {
             String message = params[2];
             String filePath = params[3];
 
-
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
@@ -161,7 +153,6 @@ public class MainActivity9 extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Boolean success) {
-            // Handle the result after sending the message
             if (success) {
                 Toast.makeText(MainActivity9.this, "Message sent successfully", Toast.LENGTH_SHORT).show();
             } else {
