@@ -1,12 +1,23 @@
 package com.ass3.i200547_i202433;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 
 public class MainActivity9 extends AppCompatActivity {
 
@@ -31,11 +42,6 @@ public class MainActivity9 extends AppCompatActivity {
         l6 = (ImageButton) findViewById(R.id.file);
         r1 = (EditText) findViewById(R.id.reply);
 
-
-    //    FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-
-      //  DatabaseReference database = FirebaseDatabase.getInstance().getReference("users");
-        //database.keepSynced(true);
 
         l1.setOnClickListener(new View.OnClickListener() {
             @Override
